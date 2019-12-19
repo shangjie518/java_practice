@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DemoCalculator</string>
+    <string name="square">\u221a</string>
+    <string name="divider">\u00f7</string>
+</resources>

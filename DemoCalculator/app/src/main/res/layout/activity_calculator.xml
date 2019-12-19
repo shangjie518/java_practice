@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:text="简单计算器"
+        android:textAlignment="center"
+        android:textSize="30sp" />
+
+
+
+        <TextView
+            android:id="@+id/tv_display"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:background="@drawable/tv_display_shape"
+            android:textSize="18sp"/>
+
+
+    <LinearLayout style="@style/ll_cal">
+
+        <Button
+            android:id="@+id/btn_enter"
+            style="@style/btn_cal"
+            android:text="CE" />
+
+        <Button
+            android:id="@+id/btn_divide"
+            style="@style/btn_cal"
+            android:text="@string/divider" />
+
+        <Button
+            android:id="@+id/btn_times"
+            style="@style/btn_cal"
+            android:text="X" />
+
+        <Button
+            android:id="@+id/btn_clear"
+            style="@style/btn_cal"
+            android:text="C" />
+
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_cal">
+
+        <Button
+            android:id="@+id/btn_7"
+            style="@style/btn_cal"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/btn_8"
+            style="@style/btn_cal"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/btn_9"
+            style="@style/btn_cal"
+            android:text="9" />
+
+        <Button
+            android:id="@+id/btn_add"
+            style="@style/btn_cal"
+            android:text="+" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_cal">
+
+        <Button
+            android:id="@+id/btn_4"
+            style="@style/btn_cal"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/btn_5"
+            style="@style/btn_cal"
+            android:text="5" />
+
+        <Button
+            android:id="@+id/btn_6"
+            style="@style/btn_cal"
+            android:text="6" />
+
+        <Button
+            android:id="@+id/btn_minus"
+            style="@style/btn_cal"
+            android:text="-" />
+
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_cal">
+
+        <Button
+            android:id="@+id/btn_1"
+            style="@style/btn_cal"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/btn_2"
+            style="@style/btn_cal"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/btn_3"
+            style="@style/btn_cal"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/btn_gen"
+            style="@style/btn_cal"
+            android:text="@string/square" />
+
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/ll_cal">
+
+        <Button
+            android:id="@+id/btn_0"
+            style="@style/btn_cal"
+            android:layout_weight="2"
+            android:text="0" />
+
+
+        <Button
+            android:id="@+id/btn_dot"
+            style="@style/btn_cal"
+            android:text="." />
+
+        <Button
+            android:id="@+id/btn_equal"
+            style="@style/btn_cal"
+            android:text="=" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
