@@ -1,5 +1,5 @@
 package reflect.tij;
-
+import gui.tij.Utilities;
 import java.util.Scanner;
 
 class Gum {
@@ -47,12 +47,14 @@ public class SweetShop {
 		System.out.println("after creating Cookie");
 	
 	}
+	
 
 	public static void main(String[] args) {
 		if(args.length==1) {
 			if(args[0].equalsIgnoreCase("Candy") ){
 				try {
 				Class<?> c = Class.forName("reflect.tij.Candy");
+				Utilities.printClassInfo(c);
 				//c.newInstance();
 				}catch (Exception e) {
 					e.printStackTrace();

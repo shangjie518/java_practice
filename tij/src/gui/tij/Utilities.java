@@ -2,6 +2,8 @@ package gui.tij;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -25,6 +27,22 @@ public class Utilities {
 			}
 			
 		});
+		
+	}
+	
+	public static void printClassInfo(Class<?> c) {
+		Class<?>[] faces=c.getInterfaces();
+		Method[] methods= c.getMethods();
+		Field[] fields=c.getFields();
+		for (Class face: faces) {
+			System.out.println(face.getCanonicalName());
+		}
+		for (Method method:methods) {
+			System.out.println(method.getName());
+		}
+		for (Field field:fields) {
+			System.out.println(field.getName());
+		}
 		
 	}
 }
