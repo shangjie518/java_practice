@@ -1,5 +1,7 @@
 package reflect.tij;
 
+import java.util.Scanner;
+
 class Gum {
 	static {
 		System.out.println("loading Gum");
@@ -15,6 +17,10 @@ class Candy {
 	static {
 		System.out.println("loading Candy");
 	}
+	public Candy() {
+		System.out.println("Candy constructor loading");
+
+	}
 }
 
 class Cookie {
@@ -25,7 +31,7 @@ class Cookie {
 
 public class SweetShop {
 
-	public static void main(String[] args) {
+	void output() {
 		System.out.println("Inside Main ");
 		new Candy();
 		System.out.println("after creating Candy");
@@ -39,5 +45,20 @@ public class SweetShop {
 		System.out.println("after Class.forName(\"Gum\")");
 		new Cookie();
 		System.out.println("after creating Cookie");
+	
+	}
+
+	public static void main(String[] args) {
+		if(args.length==1) {
+			if(args[0].equalsIgnoreCase("Candy") ){
+				try {
+				Class<?> c = Class.forName("reflect.tij.Candy");
+				//c.newInstance();
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
 	}
 }
