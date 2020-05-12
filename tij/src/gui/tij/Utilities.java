@@ -33,7 +33,7 @@ public class Utilities {
 	public static void printClassInfo(Class<?> c) {
 		Class<?>[] faces=c.getInterfaces();
 		Method[] methods= c.getMethods();
-		Field[] fields=c.getFields();
+		Field[] fields=c.getDeclaredFields();
 		for (Class face: faces) {
 			System.out.println(face.getCanonicalName());
 		}

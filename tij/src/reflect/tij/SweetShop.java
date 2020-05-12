@@ -47,9 +47,18 @@ public class SweetShop {
 		System.out.println("after creating Cookie");
 	
 	}
+	public static void isPrimitive() {
+		char [] c = new char[10];
+		if(c.getClass().isPrimitive()) {
+			System.out.println("primitive");
+		}else {
+			System.out.println("No primitive");
+		}
+	}
 	
 
 	public static void main(String[] args) {
+		isPrimitive();
 		if(args.length==1) {
 			if(args[0].equalsIgnoreCase("Candy") ){
 				try {
