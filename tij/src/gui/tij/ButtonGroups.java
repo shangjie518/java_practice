@@ -18,7 +18,8 @@ public class ButtonGroups extends JFrame{
 	public static JPanel makePanel(Class<? extends AbstractButton>kind, String[] ids) {
 		JPanel jp=new JPanel();
 		String title= kind.getName();
-		jp.setBorder(new TitledBorder(title));
+		
+		jp.setBorder(new TitledBorder(title.substring(title.lastIndexOf(".")+1)));
 		ButtonGroup bg=new ButtonGroup();
 		for(String id: ids) {
 			AbstractButton ab=new JButton("failed");
