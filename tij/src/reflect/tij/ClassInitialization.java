@@ -48,5 +48,9 @@ public class ClassInitialization {
 		System.out.println(Initable.staticFinal2);
 // Does trigger initialization:
 		System.out.println(Initable2.staticNonFinal);
+		
+		Class <? super Number> c= Object.class;
+		
+		
 	}
 }

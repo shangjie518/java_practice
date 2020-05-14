@@ -54,5 +54,18 @@ public class ToyTest {
 			System.exit(1);
 		}
 		printInfo(obj.getClass());
+		
+		Class <FancyToy> ftc= FancyToy.class;
+		Class<? super FancyToy> upftc= ftc.getSuperclass();
+		//Class<Toy> upftc= ftc.getSuperclass();
+		try {
+			Object toy=upftc.newInstance();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
