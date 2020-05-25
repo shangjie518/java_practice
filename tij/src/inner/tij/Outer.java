@@ -56,6 +56,9 @@ public class Outer {
 	class Inner{
 		private String stringSequence;
 		
+		Inner(){
+			System.out.println("Inner Object creating");
+		}
 		Inner(String s){
 			this.stringSequence=s;
 		} 
@@ -63,9 +66,10 @@ public class Outer {
 			return stringSequence;
 			
 		}
-		Inner(){
-			System.out.println("Inner Object creating");
+		public Outer getOuter() {
+			return Outer.this;
 		}
+		
 	}
 	
 	public static void main(String[] args) {
@@ -76,6 +80,11 @@ public class Outer {
 		outer.add(outer.new Inner("Tunnels"));
 		outer.add(outer.new Inner("Highways"));
 		outer.add(outer.new Inner("Unpaved roads"));
+		outer.add(outer.new Inner("Panel Heating"));
+		outer.add(outer.new Inner("Locator Light"));
 		outer.print();
+		Outer.Inner inner = outer.new Inner("Acoustic lock");
+		Outer test= inner.getOuter();
+		test.print();
 	}
 }
