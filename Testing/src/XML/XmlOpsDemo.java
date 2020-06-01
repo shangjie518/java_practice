@@ -19,31 +19,47 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class XmlOpsDemo {
 	
 	private File xmlFile;
+	private Document xmlDoc;
 	
 	public XmlOpsDemo(File in) {
 		xmlFile=in;
+		DocumentBuilder builder;
+		try {
+			String inputXml = xmlRead2Str();
+			DocumentBuilderFactory factory= DocumentBuilderFactory.newInstance();
+			builder= factory.newDocumentBuilder();
+			xmlDoc = builder.parse(String2Stream(inputXml));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void xmlReader(String inputXml) {
-		DocumentBuilder builder;
-		String tagname=new String();
-		try {
-			DocumentBuilderFactory factory= DocumentBuilderFactory.newInstance();
-			builder= factory.newDocumentBuilder();
-			Document doc = builder.parse(String2Stream(inputXml));
-			NodeList nodes=doc.getChildNodes();
-			
-			nodesList(nodes);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		NodeList nodes=xmlDoc.getChildNodes();
+		nodesList(nodes);
+	
+	}
+	
+	public void xmlreaderbyElement(String inputXml) {
+		Element root=xmlDoc.getDocumentElement();
+		System.out.println(root);
+		System.out.println(root.getNodeType());
+		System.out.println(root.getTextContent());
+		NodeList nodes=root.getChildNodes();
+		for(int i=0;i<nodes.getLength();i++) {
+			System.out.println(nodes.item(i));
+			System.out.println(nodes.item(i).getNodeType());
+			System.out.println(nodes.item(i).getTextContent());
 		}
+
 	}
 	
 	private InputStream String2Stream(String input) {
@@ -52,7 +68,7 @@ public class XmlOpsDemo {
 	}
 		
 	private String xmlHandler(String content) {
-		String regex= "\\s{2,}|\\t|\\n|\\r";
+		String regex= "\t|\r|\n";
 		Pattern p=Pattern.compile(regex);
 		Matcher m=p.matcher(content);
 		content= m.replaceAll("");
@@ -70,7 +86,11 @@ public class XmlOpsDemo {
 	}	
 	
 	private void printNode(Node node) {
-		System.out.printf("%s= %s\n",node.getNodeName(),node.getNodeValue());
+		if(node instanceof Element) {
+			System.out.printf("%s= %s\n",node.getNodeName(),node.getTextContent());
+		}
+		
+		
 	}
 	
 	private void nodesList(NodeList nodes) {
@@ -92,9 +112,8 @@ public class XmlOpsDemo {
 			str=this.xmlHandler(str);
 			System.out.println(str);
 			this.xmlReader(str);
-			//System.out.println(str);
+
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
