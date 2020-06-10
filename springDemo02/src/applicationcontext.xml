@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<bean id="people" class="com.shang.ioc.common.People" />
+	<bean id="people-static"
+		class="com.shang.ioc.static_factory.BeanFactory"
+		factory-method="createPeople" />
+	<bean id="bean-factory" class="com.shang.ioc.factory.BeanFactory" />
+	<bean id="people-bean" factory-bean="bean-factory"
+		factory-method="createPeople" />
+	<bean id="people-scope" class="com.shang.ioc.common.People"
+		scope="singleton" />
+
+
+	<bean id="people1" class="com.shang.ioc.common.People">
+		<property name="name" value="zhangsan" />
+		<property name="age" value="30" />
+	</bean>
+
+	<bean id="people2" class="com.shang.ioc.common.People">
+		<constructor-arg index="0" value="lisi" />
+		<constructor-arg index="1" value="36" />
+	</bean>
+</beans>
