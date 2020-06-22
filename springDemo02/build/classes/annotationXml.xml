@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:aop="http://www.springframework.org/schema/aop"
@@ -14,6 +14,7 @@
             http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
             http://www.springframework.org/schema/context
             http://www.springframework.org/schema/context/spring-context.xsd">
-    <!--使用context命名空间，通知spring扫描指定目录，进行注解的解析-->
-    <context:component-scan base-package="com.mengma.annotation"/>
+    <bean id="personAction" class="com.shang.ioc.autoAssembly.PersonAction" autowire="byName"/>
+    <bean id="personDao" class="com.shang.ioc.autoAssembly.PersonDaoImpl" autowire="byName"/>
+    <bean id="personService" class="com.shang.ioc.autoAssembly.PersonServiceImpl" autowire="byName"/>
 </beans>

@@ -21,8 +21,6 @@ public class People {
 		this.age = age;
 	}
 
-
-
 	public People() {
 		System.out.println("Creating people");
 	}

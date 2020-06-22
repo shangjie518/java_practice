@@ -18,7 +18,7 @@ public class SimpleProxyDemo {
 		
 		Interface obj= new RealObject();
 		
-		Interface obj2=(Interface)Proxy.newProxyInstance(Interface.class.getClassLoader(), new Class[] {Interface.class}, new InvocationHandler() {
+		Interface obj2=(Interface)Proxy.newProxyInstance(SimpleProxy.class.getClassLoader(), new Class[] {Interface.class}, new InvocationHandler() {
 
 			@Override
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {

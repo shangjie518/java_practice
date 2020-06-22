@@ -8,8 +8,8 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 public class FirstTest {
 	@Test
 	public void test() {
-		String xmlPath="C:\\Users\\shangji\\eclipse-workspace\\springDemo01\\src\\com\\shang\\ioc\\applicationcontext.xml";
-		ApplicationContext ac= new FileSystemXmlApplicationContext(xmlPath);
+		String xmlPath="applicationcontext.xml";
+		ApplicationContext ac= new ClassPathXmlApplicationContext(xmlPath);
 		PersonService ps=(PersonService)ac.getBean("personService");
 		ps.addPerson();
 	}
