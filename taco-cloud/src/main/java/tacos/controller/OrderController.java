@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
-import tacos.data.Order;
+import tacos.Order;
 
 @Controller
 @RequestMapping("/orders")

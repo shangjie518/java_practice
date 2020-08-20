@@ -1,6 +1,6 @@
 package tacos.controller;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,15 +15,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
-import tacos.data.Ingredient;
-import tacos.data.Taco;
-import tacos.data.Ingredient.Type;
+import tacos.Ingredient;
+import tacos.Taco;
+import tacos.Ingredient.Type;
+import tacos.Order;
+import tacos.repository.IngredientRepository;
+import tacos.repository.TacoRepository;
 
 @Slf4j
 @Controller
 @RequestMapping("/design")
 public class DesignTacoController {
 	
+	private final IngredientRepository ingredientRepository;
+	private  TacoRepository tacoRepository;
+	
+	public DesignTacoController(IngredientRepository ingredientRepository, TacoRepository tacoRepository) {
+		this.ingredientRepository=ingredientRepository;
+		this.tacoRepository=tacoRepository;
+	}
 	
 	private List<Ingredient>filterByType (List <Ingredient> ingredients, Type type ){
 		
@@ -34,7 +44,8 @@ public class DesignTacoController {
 
 	@GetMapping
 	public String showDesignForm(Model model) {
-		List<Ingredient> ingredients = Arrays.asList(
+		/*
+		 * List<Ingredient> ingredients = Arrays.asList(
 				new Ingredient("FLTO","Flour Tortilla",Type.WRAP),
 				new Ingredient("COTO","Corn Tortilla",Type.WRAP),
 				new Ingredient("GRBF","Ground Beef",Type.PROTEIN),
@@ -46,6 +57,10 @@ public class DesignTacoController {
 				new Ingredient("SLSA","Salsa",Type.SAUCE),
 				new Ingredient("SRCR","Sour Cream",Type.SAUCE)
 				);
+		*/
+		
+		List<Ingredient> ingredients= new ArrayList<>();
+		this.ingredientRepository.findAll().forEach(i->ingredients.add(i));
 		
 		Type[] types = Ingredient.Type.values();
 		for(Type type:types ) {
@@ -63,16 +78,24 @@ public class DesignTacoController {
 	}
 	
 	@PostMapping
-	public String processDesign(@Valid @ModelAttribute("design") Taco design, Errors errors) {
+	public String processDesign(@Valid @ModelAttribute("design") Taco design, Errors errors, Order order) {
 		if (errors.hasErrors()) {
 			return "design";
 		}
-		log.info("Processing design:"+design);
+		
+		Taco saved= tacoRepository.save(design);
+		order.addDesign(saved);
 		
 		return "redirect:/orders/current";
 	}
 	
 	
+	public Order order() {
+		return new Order();
+	}
 	
+	public Taco taco() {
+		return new Taco();
+	}
 	
 }
