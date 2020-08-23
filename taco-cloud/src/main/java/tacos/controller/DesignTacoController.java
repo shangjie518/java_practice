@@ -1,11 +1,14 @@
 package tacos.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -25,11 +28,11 @@ import tacos.repository.TacoRepository;
 @Slf4j
 @Controller
 @RequestMapping("/design")
-public class DesignTacoController {
+public class DesignTacoController{
 	
 	private final IngredientRepository ingredientRepository;
 	private  TacoRepository tacoRepository;
-	
+	@Autowired
 	public DesignTacoController(IngredientRepository ingredientRepository, TacoRepository tacoRepository) {
 		this.ingredientRepository=ingredientRepository;
 		this.tacoRepository=tacoRepository;
@@ -44,20 +47,7 @@ public class DesignTacoController {
 
 	@GetMapping
 	public String showDesignForm(Model model) {
-		/*
-		 * List<Ingredient> ingredients = Arrays.asList(
-				new Ingredient("FLTO","Flour Tortilla",Type.WRAP),
-				new Ingredient("COTO","Corn Tortilla",Type.WRAP),
-				new Ingredient("GRBF","Ground Beef",Type.PROTEIN),
-				new Ingredient("CARN","Carnitas",Type.PROTEIN),
-				new Ingredient("TMTO","Diced Tomatoes",Type.VEGGIES),
-				new Ingredient("LETC","Lettuce",Type.VEGGIES),
-				new Ingredient("CHED","Cheddar",Type.CHEESE),
-				new Ingredient("JACK","Monterrey Jac",Type.CHEESE),
-				new Ingredient("SLSA","Salsa",Type.SAUCE),
-				new Ingredient("SRCR","Sour Cream",Type.SAUCE)
-				);
-		*/
+	
 		
 		List<Ingredient> ingredients= new ArrayList<>();
 		this.ingredientRepository.findAll().forEach(i->ingredients.add(i));
@@ -67,10 +57,13 @@ public class DesignTacoController {
 			model.addAttribute(type.toString().toLowerCase(),filterByType(ingredients, type));
 			
 		}
-		model.addAttribute("design", new Taco());
 		
-		log.info(model.getAttribute("design").toString());
-		
+		Iterator iter=model.asMap().entrySet().iterator();
+		while(iter.hasNext()) {
+			Map.Entry entry=(Map.Entry)iter.next();
+			log.info("Key="+entry.getKey().toString()+" Value="+entry.getValue().toString());
+		}
+
 		return "design";
 		
 		
@@ -78,8 +71,9 @@ public class DesignTacoController {
 	}
 	
 	@PostMapping
-	public String processDesign(@Valid @ModelAttribute("design") Taco design, Errors errors, Order order) {
+	public String processDesign(@Valid Taco design, Errors errors, Order order) {
 		if (errors.hasErrors()) {
+			log.error(errors.toString());
 			return "design";
 		}
 		
@@ -89,11 +83,11 @@ public class DesignTacoController {
 		return "redirect:/orders/current";
 	}
 	
-	
+	@ModelAttribute(name="order")
 	public Order order() {
 		return new Order();
 	}
-	
+	@ModelAttribute(name= "taco")
 	public Taco taco() {
 		return new Taco();
 	}
