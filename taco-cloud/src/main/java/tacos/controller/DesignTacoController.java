@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
-import tacos.Ingredient;
-import tacos.Taco;
-import tacos.Ingredient.Type;
-import tacos.Order;
+import tacos.bean.Ingredient;
+import tacos.bean.Order;
+import tacos.bean.Taco;
+import tacos.bean.Ingredient.Type;
 import tacos.repository.IngredientRepository;
 import tacos.repository.TacoRepository;
 
@@ -79,7 +79,7 @@ public class DesignTacoController{
 		
 		Taco saved= tacoRepository.save(design);
 		order.addDesign(saved);
-		
+		log.info("order added successfully and redirect to /orders/current");
 		return "redirect:/orders/current";
 	}
 	

@@ -5,8 +5,8 @@ import org.springframework.core.convert.converter.Converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
- 
-import tacos.Ingredient;
+
+import tacos.bean.Ingredient;
 import tacos.repository.IngredientRepository;
  
 @Component

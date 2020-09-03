@@ -1,6 +1,6 @@
 package tacos.repository;
 
-import tacos.Order;
+import tacos.bean.Order;
 
 public interface OrderRespository {
 

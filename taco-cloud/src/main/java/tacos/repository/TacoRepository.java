@@ -1,6 +1,6 @@
 package tacos.repository;
 
-import tacos.Taco;
+import tacos.bean.Taco;
 
 public interface TacoRepository {
 

@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import tacos.Ingredient;
+import tacos.bean.Ingredient;
 import tacos.repository.IngredientRepository;
 @Repository
 public class JdbcIngredientReposity implements IngredientRepository {

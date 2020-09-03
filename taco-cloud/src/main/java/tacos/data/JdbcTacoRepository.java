@@ -12,8 +12,8 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import tacos.Ingredient;
-import tacos.Taco;
+import tacos.bean.Ingredient;
+import tacos.bean.Taco;
 import tacos.repository.TacoRepository;
 
 @Repository

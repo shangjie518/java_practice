@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import tacos.Order;
-import tacos.Taco;
+import tacos.bean.Order;
+import tacos.bean.Taco;
 import tacos.repository.OrderRespository;
 
 @Repository

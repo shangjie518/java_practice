@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 
 import lombok.extern.slf4j.Slf4j;
-import tacos.Order;
+import tacos.bean.Order;
 import tacos.repository.OrderRespository;
 
 @Controller
@@ -28,6 +28,7 @@ public class OrderController {
 	@GetMapping("/current")
 	public String orderForm(Model model) {
 		//model.addAttribute("order", new Order());
+		log.info("/orders/current");
 		return "orderForm";
 	}
 	
