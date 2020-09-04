@@ -1,0 +1,18 @@
+security:
+  user:
+    name: buzz
+    password: infinity
+taco:
+  orders:
+    page-size: 10
+
+logging:
+  level:
+    taco: DEBUG
+---
+spring:  profiles: prod
+  datasource:    url: jdbc:mysql://localhost/tacocloud    name: shangji
+    password: root
+logging:
+  level:
+    taco: WARN

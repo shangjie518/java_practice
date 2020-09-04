@@ -22,8 +22,8 @@ import tacos.bean.Ingredient;
 import tacos.bean.Order;
 import tacos.bean.Taco;
 import tacos.bean.Ingredient.Type;
-import tacos.repository.IngredientRepository;
-import tacos.repository.TacoRepository;
+import tacos.repository.jdbc.IngredientRepository;
+import tacos.repository.jdbc.TacoRepository;
 
 @Slf4j
 @Controller

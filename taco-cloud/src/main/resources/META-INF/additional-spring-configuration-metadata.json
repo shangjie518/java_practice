@@ -1,0 +1,19 @@
+{
+	"properties": [
+	{
+  		"name": "taco.orders.page-size",
+  		"type": "java.lang.String",
+  		"description": "Sets the maximum number of orders to display in a list."
+  	},
+  	{
+  	   "name": "security.user.name",
+  		"type": "java.lang.String",
+  		"description": "user name."
+  	},
+  	{
+  	   "name": "security.user.password",
+  		"type": "java.lang.String",
+  		"description": "user password."
+  	}
+  ]
+}

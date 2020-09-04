@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import tacos.bean.Ingredient;
 import tacos.bean.Taco;
-import tacos.repository.TacoRepository;
+import tacos.repository.jdbc.TacoRepository;
 
 @Repository
 public class JdbcTacoRepository implements TacoRepository {

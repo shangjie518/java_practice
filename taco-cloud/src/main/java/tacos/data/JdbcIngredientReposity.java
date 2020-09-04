@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import tacos.bean.Ingredient;
-import tacos.repository.IngredientRepository;
+import tacos.repository.jdbc.IngredientRepository;
 @Repository
 public class JdbcIngredientReposity implements IngredientRepository {
 

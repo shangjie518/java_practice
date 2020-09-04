@@ -12,7 +12,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import lombok.extern.slf4j.Slf4j;
 import tacos.bean.Order;
-import tacos.repository.OrderRespository;
+import tacos.repository.jdbc.OrderRespository;
 
 @Controller
 @RequestMapping("/orders")

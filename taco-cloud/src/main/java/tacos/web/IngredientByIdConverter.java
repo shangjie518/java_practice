@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import tacos.bean.Ingredient;
-import tacos.repository.IngredientRepository;
+import tacos.repository.jdbc.IngredientRepository;
  
 @Component
 public class IngredientByIdConverter implements Converter<String, Ingredient> {
