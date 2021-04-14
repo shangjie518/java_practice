@@ -1,6 +1,7 @@
 package com.example.tacoviewer.data;
 
 import com.example.tacoviewer.bean.Order;
+import com.example.tacoviewer.bean.Shelf_State;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,6 +22,61 @@ public class TacoOrder {
 
         }
 
+    }
+
+    public ArrayList<Order> getHotShelf(){
+        ArrayList<Order> result = new ArrayList<Order>();
+        for(int i=0 ;i<orderList.size();i++){
+            if(orderList.get(i).shelf == Shelf_State.HOT){
+                result.add(orderList.get(i));
+            }
+
+        }
+        return result;
+    }
+
+    public ArrayList<Order> getColdShelf(){
+        ArrayList<Order> result = new ArrayList<Order>();
+        for(int i=0 ;i<orderList.size();i++){
+            if(orderList.get(i).shelf == Shelf_State.COLD){
+                result.add(orderList.get(i));
+            }
+
+        }
+        return result;
+    }
+
+    public ArrayList<Order> getFrozenShelf(){
+        ArrayList<Order> result = new ArrayList<Order>();
+        for(int i=0 ;i<orderList.size();i++){
+            if(orderList.get(i).shelf == Shelf_State.FROZEN){
+                result.add(orderList.get(i));
+            }
+
+        }
+        return result;
+    }
+
+    public ArrayList<Order> getOverflowShelf(){
+        ArrayList<Order> result = new ArrayList<Order>();
+        for(int i=0 ;i<orderList.size();i++){
+            if(orderList.get(i).shelf == Shelf_State.OVERFLOW){
+                result.add(orderList.get(i));
+            }
+
+        }
+        return result;
+    }
+
+    public ArrayList<Order> getNoneShelf() {
+        ArrayList<Order> result = new ArrayList<Order>();
+        for (int i = 0; i < orderList.size(); i++) {
+            if (orderList.get(i).shelf == Shelf_State.NONE) {
+                result.add(orderList.get(i));
+            }
+
+        }
+        return result;
     }
 
 }

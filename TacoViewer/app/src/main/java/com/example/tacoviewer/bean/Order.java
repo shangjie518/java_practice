@@ -3,9 +3,10 @@ package com.example.tacoviewer.bean;
 
 import android.text.method.DateTimeKeyListener;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Order {
+public class Order implements Serializable {
 
     public String id;
     public Order_State state;
